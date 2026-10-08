@@ -1,0 +1,21 @@
+{
+  "product_name": "Pokémon 30º Aniversario - Lote 6 Sobres",
+  "postal_code": "",
+  "city": "",
+  "interval_minutes": 5,
+  "max_price": null,
+  "products": {
+    "elcorteingles": [
+      "https://www.elcorteingles.es/juguetes/A202035444-30th-blister-de-sobres-de-mejora-de-celebracion-30-aniversario-de-jcc-pokemon-pokemon-bandai/"
+    ],
+    "hipercor": [],
+    "carrefour": [
+      "https://www.carrefour.es/pokemon-caja-lote-6-sobres-30th-aniversario-juego-de-mesa-6-anos-unboxing/VC4A-34530762/p"
+    ]
+  },
+  "search_urls": {
+    "elcorteingles": [],
+    "hipercor": [],
+    "carrefour": []
+  }
+}
