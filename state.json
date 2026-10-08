@@ -1,3 +1,12 @@
 {
-  "stores": {}
+  "stores": {
+    "carrefour:https://www.carrefour.es/pokemon-caja-lote-6-sobres-30th-aniversario-juego-de-mesa-6-anos-unboxing/VC4A-34530762/p": {
+      "modes": [],
+      "status": "BLOCKED"
+    },
+    "elcorteingles:https://www.elcorteingles.es/juguetes/A202035444-30th-blister-de-sobres-de-mejora-de-celebracion-30-aniversario-de-jcc-pokemon-pokemon-bandai/": {
+      "modes": [],
+      "status": "BLOCKED"
+    }
+  }
 }
