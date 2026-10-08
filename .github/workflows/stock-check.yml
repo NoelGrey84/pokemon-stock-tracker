@@ -1,0 +1,37 @@
+name: Pokémon stock check
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pokemon-stock-check
+  cancel-in-progress: false
+jobs:
+  check-stock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restore runtime config
+        env: {STOCK_CONFIG_JSON: ${{ secrets.STOCK_CONFIG_JSON }}}
+        run: |
+          if [ -n "$STOCK_CONFIG_JSON" ]; then printf '%s' "$STOCK_CONFIG_JSON" > config.json; else cp config.example.json config.json; fi
+      - name: Run stock checker
+        env: {DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}}
+        run: python -m src.main
+      - name: Persist changed state
+        run: |
+          if git diff --quiet -- state.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git commit -m "chore: update stock tracker state"
+          git push
